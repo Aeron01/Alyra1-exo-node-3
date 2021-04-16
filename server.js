@@ -4,7 +4,7 @@ const axios = require('axios')
 
 
 // définition  mon appli
-const appSrXPRS = express()
+const appSrvXPRS = express()
 
 // le port d'écoute de notre serveur
 const PORT = 3333
@@ -139,51 +139,8 @@ app.get('/calc/mod/:op1/:op2', async (req, res) => {
 
 
 
-app.get('/people/:peopleId', async (req, res) => {
-  try {
-    const id = req.params.peopleId
-    const response = await axios.get(`https://swapi.dev/api/people/${id}`)
-    res.send(response.data)
-  } catch (e) {
-    res.send(e.message)
-  }
-})
-
-app.get('/starships/:starId', async (req, res) => {
-  try {
-    const id = req.params.starId
-    const response = await axios.get(`https://swapi.dev/api/starships/${id}`)
-    res.send(response.data)
-  } catch (e) {
-    res.send(e.message)
-  }
-})
-
-app.get('/wiki/:word', async (req, res) => {
-  try {
-    const word = req.params.word
-    const response = await axios.get(`https://en.wikipedia.org/wiki/${word}`)
-    res.send(response.data)
-  } catch (e) {
-    console.log(e.message)
-  }
-
-})
-
-app.get('/calc/add/:op1/:op2', async (req, res) => {
-  try {
-    const op1 = req.params.op1
-    const op2 = req.params.op2
-    const result = { op: 'add', op1: op1, op2: op2, result: op1 + op2 }
-
-    res.json(result)
-  } catch (e) {
-    console.log(e.message)
-  }
-})
-
-// démarrage de notre serveur sur le port 3000
+// démarrage du serveur sur le port 3333
 app.listen(PORT, () => {
   //exécution d'un affichage au lacement du serveur.
-  console.log(`server listening at http://localhost:${PORT}`)
+  console.log(`server appSrvXPRS listening at http://localhost:${PORT}`)
 })
