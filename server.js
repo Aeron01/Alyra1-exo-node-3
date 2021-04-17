@@ -11,13 +11,13 @@ const PORT = 3333
 
 // définition d'une route '/' par défaut.
 // et retour d'un message de bienvenue via la callback
-app.get('/', (req, res) => {
+appSrvXPRS.get('/', (req, res) => {
   res.send('Welcom stranger')
 })
 
 // fonction calculatrice de l'app
 // partie addition
-app.get('/calc/add/:op1/:op2', async (req, res) => {
+appSrvXPRS.get('/calc/add/:op1/:op2', async (req, res) => {
   try {
     const op1 = req.params.op1 //
     const op2 = req.params.op2
@@ -41,7 +41,7 @@ app.get('/calc/add/:op1/:op2', async (req, res) => {
 
 // partie soustraction
 
-app.get('/calc/sub/:op1/:op2', async (req, res) => {
+appSrvXPRS.get('/calc/sub/:op1/:op2', async (req, res) => {
   try {
     const op1 = req.params.op1
     const op2 = req.params.op2
@@ -65,7 +65,7 @@ app.get('/calc/sub/:op1/:op2', async (req, res) => {
 
 // partie multiplication
 
-app.get('/calc/mul/:op1/:op2', async (req, res) => {
+appSrvXPRS.get('/calc/mul/:op1/:op2', async (req, res) => {
   try {
     const op1 = req.params.op1
     const op2 = req.params.op2
@@ -91,7 +91,7 @@ app.get('/calc/mul/:op1/:op2', async (req, res) => {
 
 // partie division
 
-app.get('/calc/div/:op1/:op2', async (req, res) => {
+appSrvXPRS.get('/calc/div/:op1/:op2', async (req, res) => {
   try {
     const op1 = req.params.op1
     const op2 = req.params.op2
@@ -115,7 +115,7 @@ app.get('/calc/div/:op1/:op2', async (req, res) => {
 
 // partie modulo
 
-app.get('/calc/mod/:op1/:op2', async (req, res) => {
+appSrvXPRS.get('/calc/mod/:op1/:op2', async (req, res) => {
   try {
     const op1 = req.params.op1
     const op2 = req.params.op2
@@ -140,7 +140,7 @@ app.get('/calc/mod/:op1/:op2', async (req, res) => {
 
 
 // démarrage du serveur sur le port 3333
-app.listen(PORT, () => {
+appSrvXPRS.listen(PORT, () => {
   //exécution d'un affichage au lacement du serveur.
   console.log(`server appSrvXPRS listening at http://localhost:${PORT}`)
 })
