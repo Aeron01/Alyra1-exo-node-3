@@ -1,7 +1,11 @@
+/* Correction
+Travail excellent, dommage que tu te repetes tant avec la gestion des opérations arithmétiques
+Tu pourrais extraire tout cela dans une fonction ou un module pour rendre ton code générique.
+Bravo!
+*/
 // importation de axios et d'express
 const express = require('express')
 const axios = require('axios')
-
 
 // définition  mon appli
 const appSrvXPRS = express()
@@ -22,17 +26,21 @@ appSrvXPRS.get('/calc/add/:op1/:op2', async (req, res) => {
     const op1 = req.params.op1 //
     const op2 = req.params.op2
 
-    if (isNaN(op1) || isNaN(op2)) { // check pour savoir si l'opérande est un chiffre ou non
-      const error = { op: 'add', op1: op1, op2: op2, error: 'one of the operands is not a number.' } // mise en forme d'une variable de l'erreur sous forme de JSon
+    if (isNaN(op1) || isNaN(op2)) {
+      // check pour savoir si l'opérande est un chiffre ou non
+      const error = {
+        op: 'add',
+        op1: op1,
+        op2: op2,
+        error: 'one of the operands is not a number.',
+      } // mise en forme d'une variable de l'erreur sous forme de JSon
       res.json(error) // affichage du message d'erreur dans le navigateur
-
     } else {
       const isNbOp1 = Number(op1) //passage de isNbOp1 qui est une string en nombre
       const isNbOp2 = Number(op2)
       const rest = isNbOp1 + isNbOp2 // calcul des deux opérandes, ici une addition
       const result = { op: 'add', op1: isNbOp1, op2: isNbOp2, result: rest } // mise en forme d'une variable du résultat sous forme de JSon
       res.json(result) // affichage du résultat dans le navigateur
-
     }
   } catch (e) {
     console.log(e.message)
@@ -47,16 +55,19 @@ appSrvXPRS.get('/calc/sub/:op1/:op2', async (req, res) => {
     const op2 = req.params.op2
 
     if (isNaN(op1) || isNaN(op2)) {
-      const error = { op: 'add', op1: op1, op2: op2, error: 'one of the operands is not a number.' }
+      const error = {
+        op: 'add',
+        op1: op1,
+        op2: op2,
+        error: 'one of the operands is not a number.',
+      }
       res.json(error)
-
     } else {
       const isNbOp1 = Number(op1)
       const isNbOp2 = Number(op2)
       const rest = isNbOp1 - isNbOp2
       const result = { op: 'add', op1: isNbOp1, op2: isNbOp2, result: rest }
       res.json(result)
-
     }
   } catch (e) {
     console.log(e.message)
@@ -72,17 +83,18 @@ appSrvXPRS.get('/calc/mul/:op1/:op2', async (req, res) => {
 
     if (isNaN(op1) || isNaN(op2)) {
       const error = {
-        op: 'add', op1: op1, op2: op2, error: 'one of the operands is not a number.'
+        op: 'add',
+        op1: op1,
+        op2: op2,
+        error: 'one of the operands is not a number.',
       }
       res.json(error)
-
     } else {
       const isNbOp1 = Number(op1)
       const isNbOp2 = Number(op2)
       const rest = isNbOp1 * isNbOp2
       const result = { op: 'add', op1: isNbOp1, op2: isNbOp2, result: rest }
       res.json(result)
-
     }
   } catch (e) {
     console.log(e.message)
@@ -97,16 +109,19 @@ appSrvXPRS.get('/calc/div/:op1/:op2', async (req, res) => {
     const op2 = req.params.op2
 
     if (isNaN(op1) || isNaN(op2)) {
-      const error = { op: 'add', op1: op1, op2: op2, error: 'one of the operands is not a number.' }
+      const error = {
+        op: 'add',
+        op1: op1,
+        op2: op2,
+        error: 'one of the operands is not a number.',
+      }
       res.json(error)
-
     } else {
       const isNbOp1 = Number(op1)
       const isNbOp2 = Number(op2)
       const rest = isNbOp1 / isNbOp2
       const result = { op: 'add', op1: isNbOp1, op2: isNbOp2, result: rest }
       res.json(result)
-
     }
   } catch (e) {
     console.log(e.message)
@@ -121,23 +136,24 @@ appSrvXPRS.get('/calc/mod/:op1/:op2', async (req, res) => {
     const op2 = req.params.op2
 
     if (isNaN(op1) || isNaN(op2)) {
-      const error = { op: 'add', op1: op1, op2: op2, error: 'one of the operands is not a number.' }
+      const error = {
+        op: 'add',
+        op1: op1,
+        op2: op2,
+        error: 'one of the operands is not a number.',
+      }
       res.json(error)
-
     } else {
       const isNbOp1 = Number(op1)
       const isNbOp2 = Number(op2)
       const rest = isNbOp1 % isNbOp2
       const result = { op: 'add', op1: isNbOp1, op2: isNbOp2, result: rest }
       res.json(result)
-
     }
   } catch (e) {
     console.log(e.message)
   }
 })
-
-
 
 // démarrage du serveur sur le port 3333
 appSrvXPRS.listen(PORT, () => {
